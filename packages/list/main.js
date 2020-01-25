@@ -6,9 +6,10 @@ Docs & License: https://fullcalendar.io/
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@fullcalendar/core')) :
-    typeof define === 'function' && define.amd ? define(['exports', '@fullcalendar/core'], factory) :
-    (global = global || self, factory(global.FullCalendarList = {}, global.FullCalendar));
-}(this, function (exports, core) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['exports', '@fullcalendar/core'], factory) :
+            (global = global || self, factory(global.FullCalendarList = {}, global.FullCalendar));
+}(this, function (exports, core) {
+    'use strict';
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -26,7 +27,7 @@ Docs & License: https://fullcalendar.io/
     ***************************************************************************** */
     /* global Reflect, Promise */
 
-    var extendStatics = function(d, b) {
+    var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
@@ -93,8 +94,8 @@ Docs & License: https://fullcalendar.io/
             return '<tr class="' + classes.join(' ') + '">' +
                 (this.displayEventTime ?
                     '<td class="fc-list-item-time ' + theme.getClass('widgetContent') + '">' +
-                        (timeHtml || '') +
-                        '</td>' :
+                    (timeHtml || '') +
+                    '</td>' :
                     '') +
                 '<td class="fc-list-item-marker ' + theme.getClass('widgetContent') + '">' +
                 '<span class="fc-event-dot"' +
@@ -106,8 +107,12 @@ Docs & License: https://fullcalendar.io/
                 '<td class="fc-list-item-title ' + theme.getClass('widgetContent') + '">' +
                 '<a' + (url ? ' href="' + core.htmlEscape(url) + '"' : '') + '>' +
                 core.htmlEscape(eventDef.title || '') +
+                '<img id="check" src="Images/List-Buttons/check.png" alt="check" width="22" height="22" align="right">'+
+                '<img id="clear" src="Images/List-Buttons/clear.png" alt="check" width="22" height="22" align="right">'+
+                '<img id="split" src="Images/List-Buttons/split.png" alt="check" width="22" height="22" align="right">'+
                 '</a>' +
                 '</td>' +
+
                 '</tr>';
         };
         // like "4:00am"
@@ -141,7 +146,7 @@ Docs & License: https://fullcalendar.io/
                 }
             }
             _this.scroller = new core.ScrollComponent('hidden', // overflow x
-            'auto' // overflow y
+                'auto' // overflow y
             );
             _this.el.appendChild(_this.scroller.el);
             _this.contentEl = _this.scroller.el; // shortcut
@@ -212,7 +217,7 @@ Docs & License: https://fullcalendar.io/
                     if (!seg.isEnd && !allDay &&
                         dayIndex + 1 < dayRanges.length &&
                         range.end <
-                            dateEnv.add(dayRanges[dayIndex + 1].start, nextDayThreshold)) {
+                        dateEnv.add(dayRanges[dayIndex + 1].start, nextDayThreshold)) {
                         seg.end = range.end;
                         seg.isEnd = true;
                         break;
@@ -224,12 +229,12 @@ Docs & License: https://fullcalendar.io/
         ListView.prototype.renderEmptyMessage = function () {
             this.contentEl.innerHTML =
                 '<div class="fc-list-empty-wrap2">' + // TODO: try less wraps
-                    '<div class="fc-list-empty-wrap1">' +
-                    '<div class="fc-list-empty">' +
-                    core.htmlEscape(this.opt('noEventsMessage')) +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
+                '<div class="fc-list-empty-wrap1">' +
+                '<div class="fc-list-empty">' +
+                core.htmlEscape(this.opt('noEventsMessage')) +
+                '</div>' +
+                '</div>' +
+                '</div>';
         };
         // called by ListEventRenderer
         ListView.prototype.renderSegList = function (allSegs) {
@@ -275,15 +280,15 @@ Docs & License: https://fullcalendar.io/
                 'data-date': dateEnv.formatIso(dayDate, { omitTime: true })
             }, '<td class="' + (this.calendar.theme.getClass('tableListHeading') ||
                 this.calendar.theme.getClass('widgetHeader')) + '" colspan="3">' +
-                (mainFormat ?
-                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-main' }, core.htmlEscape(dateEnv.format(dayDate, mainFormat)) // inner HTML
-                    ) :
-                    '') +
-                (altFormat ?
-                    core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-alt' }, core.htmlEscape(dateEnv.format(dayDate, altFormat)) // inner HTML
-                    ) :
-                    '') +
-                '</td>');
+            (mainFormat ?
+                core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-main' }, core.htmlEscape(dateEnv.format(dayDate, mainFormat)) // inner HTML
+                ) :
+                '') +
+            (altFormat ?
+                core.buildGotoAnchorHtml(this, dayDate, { 'class': 'fc-list-heading-alt' }, core.htmlEscape(dateEnv.format(dayDate, altFormat)) // inner HTML
+                ) :
+                '') +
+            '</td>');
         };
         return ListView;
     }(core.View));
