@@ -30,6 +30,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 
 <script>
@@ -77,13 +78,31 @@
       },
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
+      clickble: true,
       drop: function(arg) {
         // is the "remove after drop" checkbox checked?
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
         }
+      },
+      eventClick: function(info) {
+        //alert('Event: ' + info.event.title);
+        //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+        //alert('View: ' + info.view.type);
+        if (confirm("Delete Event?")) {
+          info.event.remove();
+          if (document.getElementById('drop-remove').checked) {
+          // if so, remove the element from the "Draggable Events" list
+          document.getElementById('external-events-list').appendChild(arg.draggedEl);
+        }
+        } else {
+          txt = "You pressed Cancel!";
+          info.el.style.borderColor = 'red';
+        } 
+        // change the border color just for fun
       }
+
     });
     
     calendar.render();
@@ -91,6 +110,7 @@
   });
 
 </script>
+
 
 <body>
     <section class = "title-section" id = "title">

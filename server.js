@@ -4,7 +4,7 @@ var fs = require('fs');
 var qs = require('querystring');
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
-var port = 8110 //try different ports if not working
+var port = 4242; //try different ports if not working
 //cookie key setup
 var Cookies = require('cookies');
 var keys = ['keyboard cat'];
