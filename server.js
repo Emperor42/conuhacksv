@@ -15,8 +15,14 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Dev:<password>@conuhacks-g1c1s.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  
+  //define the collection for the user, has 
+  const userCollection = client.db("main").collection("users");
+  //define the collection for the group, has 
+  const groupCollection = client.db("main").collection("groups");
+  //define the collection for the tasks, has 
+  const taskCollection = client.db("main").collection("tasks");
+
+
   //define events
   //dealing with the events
   //Create an event handler:
@@ -27,16 +33,42 @@ client.connect(err => {
   //Assign the event handler to an event:
   eventEmitter.on('test', aHandler);
 
+  //START: Actual Event Handlers
+
+  //Make a user
+  var aNewUserHandler = function () {
+    console.log('EVENT: NewUser');
+  }
+  //Assign the event handler to an event:
+  eventEmitter.on('newUser', aNewUserHandler);
+
+  //Make a group
+  var aNewGroupHandler = function () {
+    console.log('EVENT: NewGroup');
+  }
+  //Assign the event handler to an event:
+  eventEmitter.on('newGroup', aNewGroupHandler);
+
+  //Make a task
+  var aNewTaskHandler = function () {
+    console.log('EVENT: NewGroup');
+  }
+  //Assign the event handler to an event:
+  eventEmitter.on('newTask', aNewGroupHandler);
+
   http.createServer(function (req, res) {
     //make the cookies object
-    var cookies = new Cookies(req, res, { keys: keys })
+    var cookies = new Cookies(req, res, { keys: keys });
 
+    /*
   // Get a cookie
   var lastVisit = cookies.get('LastVisit', { signed: true })
 
   // Set the cookie to a value
   cookies.set('LastVisit', new Date().toISOString(), { signed: true })
     
+  */
+
   console.log(req.method);
   if (req.method=="POST"){
     //general data handling
@@ -68,25 +100,13 @@ client.connect(err => {
       console.log(filename);
       //register the different end points, this must be first
       if (filename=="./"||filename.includes("index")){
-          filename = "./index.html"
+          filename = "./index.html";
       }
-      //REM: COOKIES TEST
-      if (filename.includes("cookietest")){
-        res.setHeader('Content-Type', 'text/plain')
-        if (!lastVisit) {
-          
-          return res.end('Welcome, first time visitor!')
-        } else {
-          
-          return res.end('Welcome back! Nothing much changed since your last visit at ' + lastVisit + '.')
-        }
-    }
-    if (filename.includes("cookieclear")){
-      res.setHeader('Content-Type', 'text/plain')
-      cookies.set('COOKIE CLEARED: LastVisit', new Date().toISOString(), { signed: true })
-      return res.end('Cookie CLeared!')
-  }
-    //END COOKIES TEST
+      //the event rule to remove extra and send to old
+      if(filename.includes("index")){
+        filename = "./index.html";
+      }
+   
       //other site checks to run through
       fs.readFile(filename, function(err, data) {
         if (err) {
@@ -108,3 +128,10 @@ client.connect(err => {
 });
 
 console.log("LISTENING on ", port)
+
+/*
+  Defines a security layer as needed, default is plaintext
+*/
+function generalSecurityLayer(message, seed, pwd){
+  
+}
