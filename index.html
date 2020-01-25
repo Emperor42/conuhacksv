@@ -15,11 +15,82 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
 
+  <!-- Calendar Packages -->
+  <link href='packages/core/main.css' rel='stylesheet' />
+  <link href='packages/daygrid/main.css' rel='stylesheet' />
+  <link href='packages/timegrid/main.css' rel='stylesheet' />
+  <link href='packages/list/main.css' rel='stylesheet' />
+  <script src='packages/core/main.js'></script>
+  <script src='packages/interaction/main.js'></script>
+  <script src='packages/daygrid/main.js'></script>
+  <script src='packages/timegrid/main.js'></script>
+  <script src='packages/list/main.js'></script>
+
   <!-- Bootstrap Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var Calendar = FullCalendar.Calendar;
+    var Draggable = FullCalendarInteraction.Draggable
+
+    /* initialize the external events
+    -----------------------------------------------------------------*/
+
+    var containerEl = document.getElementById('external-events-list');
+    new Draggable(containerEl, {
+      itemSelector: '.fc-event',
+      eventData: function(eventEl) {
+        return {
+          title: eventEl.innerText.trim()
+        }
+      }
+    });
+
+    //// the individual way to do it
+    // var containerEl = document.getElementById('external-events-list');
+    // var eventEls = Array.prototype.slice.call(
+    //   containerEl.querySelectorAll('.fc-event')
+    // );
+    // eventEls.forEach(function(eventEl) {
+    //   new Draggable(eventEl, {
+    //     eventData: {
+    //       title: eventEl.innerText.trim(),
+    //     }
+    //   });
+    // });
+
+    /* initialize the calendar
+    -----------------------------------------------------------------*/
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,listWeek'
+      },
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar
+      drop: function(arg) {
+        // is the "remove after drop" checkbox checked?
+        if (document.getElementById('drop-remove').checked) {
+          // if so, remove the element from the "Draggable Events" list
+          arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+        }
+      }
+    });
+    
+    calendar.render();
+
+  });
+
+</script>
 
 <body>
     <section class = "title-section" id = "title">
@@ -65,23 +136,28 @@
         </div>
     </section>
 
-    <section class="side-navigation" id="sidebar">
-      <div class="container-fluid">
+    <div id='wrap'>
 
-        <div class="row">
-        <!-- Side navigation -->
-        <div class="sidenav">
-          <a href="#">Upcoming Events</a>
-          <a href="#">Event 1</a>
-          <a href="#">Event 2</a>
-          <a href="#">Event 3</a>
-
-          <a href="#">Suggested Events</a>
-          <a href="#">Event 1</a>
-          <a href="#">Event 2</a>
-          <a href="#">Event 3</a>
+      <div id='external-events'>
+        <h4>Tasks to Perform</h4>
+  
+        <div id='external-events-list'>
+          <div class='fc-event'>Hello</div>
+          <div class='fc-event'>My Event 2</div>
+          <div class='fc-event'>My Event 3</div>
+          <div class='fc-event'>My Event 4</div>
+          <div class='fc-event'>My Event 5</div>
         </div>
+  
+        <p>
+          <input type='checkbox' id='drop-remove' />
+          <label for='drop-remove'>remove after drop</label>
+        </p>
       </div>
+  
+      <div id='calendar'></div>
+  
+      <div style='clear:both'>
       </div>
-    </section>
+    </div>
 </body>
