@@ -4,7 +4,7 @@ var fs = require('fs');
 var qs = require('querystring');
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
-var port = 8106 //try different ports if not working
+var port = 8110 //try different ports if not working
 //cookie key setup
 var Cookies = require('cookies');
 var keys = ['keyboard cat'];
@@ -112,6 +112,16 @@ client.connect(err => {
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found <a href=\"index.html\">Go to Home</>");
+        }
+        if (filename.includes(".css")){
+          res.writeHead(200, {'Content-type' : 'text/css'});
+          res.write(data);
+          return res.end();
+        } 
+        if (filename.includes(".js")){
+          res.writeHead(200, {'Content-type' : 'text/javascript'});
+          res.write(data);
+          return res.end();
         } 
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
