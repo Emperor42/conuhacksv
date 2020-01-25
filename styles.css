@@ -1,0 +1,98 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  
+  .container-fluid{
+    padding: 1% 3%;
+  }
+
+  /*Headings*/
+
+  .title-heading{
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.5rem;
+    line-height: 1.5;
+  
+  }
+  
+  .section-heading{
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+  
+  /* Sections */
+  
+  .title-section{
+    background-color: #f6c90e;
+    color: #303841;
+  }
+
+  /* Navigation Bar */
+
+.navbar{
+    padding: 0 0 1.5rem;
+  }
+  
+  .navbar-brand{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 20px;
+  }
+  
+  .nav-link{
+    font-size: 1.2rem;
+    font-family: "Montserrat-Light",sans-serif;
+  }
+
+  .nav-name{
+    padding: 0 20px;
+    font-size: 1.2rem;
+    font-family: "Montserrat-Light",sans-serif;
+  }
+
+  /*Side Navigation Bar*/
+
+  .sidenav {
+    height: 100%;
+    width: 200px; 
+    position: fixed; 
+    z-index: -1; 
+    top: 0; 
+    left: 0;
+    background-color: #303841; 
+    overflow-x: hidden;
+    padding-top: 170px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-family: "Montserrat-Light",sans-serif;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f6c90e;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 160px; 
+    padding: 0px 10px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  

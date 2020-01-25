@@ -1,12 +1,87 @@
-<!DOCTYPE HTML>
-    <html>  
-      
-    <head>  
-        <TITLE>HTML-1</TITLE>  
-    </head>  
-      
-    <body>  
-        <h1> This is HTML Page - 1 </h1>  
-    </body>  
-      
-    </html>  
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BusyBee</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu|Viga|Indie+Flower|Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <section class = "title-section" id = "title">
+
+        <div class = "container-fluid">
+
+                        <!-- Nav Bar -->
+                  
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <a class="navbar-brand" href="#title-text">
+                                <img src="images/logo.png" width="65" height="65" class="d-inline-block align-top" alt="">
+                                <em>BusyBee</em>
+                            </a>
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                          
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                  <a class="nav-link" href="#">Points: <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profile
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Edit Profile</a>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something</a>
+                                  </div>
+                                </li>
+                                <li class="nav-name">
+                                  <img src="images/user-icon.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                                </li>
+                              </ul>
+                            </div>
+                        </nav>
+        </div>
+    </section>
+
+    <section class="side-navigation" id="sidebar">
+      <div class="container-fluid">
+
+        <div class="row">
+        <!-- Side navigation -->
+        <div class="sidenav">
+          <a href="#">Upcoming Events</a>
+          <a href="#">Event 1</a>
+          <a href="#">Event 2</a>
+          <a href="#">Event 3</a>
+
+          <a href="#">Suggested Events</a>
+          <a href="#">Event 1</a>
+          <a href="#">Event 2</a>
+          <a href="#">Event 3</a>
+        </div>
+      </div>
+      </div>
+    </section>
+</body>
