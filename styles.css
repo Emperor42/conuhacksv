@@ -95,4 +95,34 @@ body{
     float: right;
     width: 900px;
   }
+
+  #check{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #check:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
+
+  #split{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #split:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
+
+  #clear{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #clear:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
   
