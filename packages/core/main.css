@@ -260,18 +260,18 @@ temporary rendered events).
   font-size: 0.85em;
   line-height: 1.4;
   border-radius: 3px;
-  border: 1px solid #3788d8;
+  border: 1px solid #f6c90e;
 }
 
 .fc-event,
 .fc-event-dot {
-  background-color: #3788d8;
+  background-color: #f6c90e;
   /* default BACKGROUND color */
 }
 
 .fc-event,
 .fc-event:hover {
-  color: #fff;
+  color: #181401;
   /* default TEXT color */
   text-decoration: none;
   /* if <a> has an href */
@@ -598,7 +598,6 @@ from https://feathericons.com/ and built with IcoMoon
 .fc-icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "fcicons" !important;
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
