@@ -107,9 +107,9 @@ Docs & License: https://fullcalendar.io/
                 '<td class="fc-list-item-title ' + theme.getClass('widgetContent') + '">' +
                 '<a' + (url ? ' href="' + core.htmlEscape(url) + '"' : '') + '>' +
                 core.htmlEscape(eventDef.title || '') +
-                '<img id="check" src="Images/List-Buttons/check.png" alt="check" width="22" height="22" align="right">'+
-                '<img id="clear" src="Images/List-Buttons/clear.png" alt="check" width="22" height="22" align="right">'+
-                '<img id="split" src="Images/List-Buttons/split.png" alt="check" width="22" height="22" align="right">'+
+                '<img id="check" src="Images/List-Buttons/check-hover.png" alt="check" width="22" height="22" align="right">'+
+                '<img id="clear" src="Images/List-Buttons/clear-hover.png" alt="check" width="22" height="22" align="right">'+
+                '<img id="split" src="Images/List-Buttons/split-hover.png" alt="check" width="22" height="22" align="right">'+
                 '</a>' +
                 '</td>' +
 
