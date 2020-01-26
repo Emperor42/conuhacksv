@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BusyBee</title>
+  <meta name="description" content="Innovative All-in-one scheduling solution designed to reduce stress">
+  <meta name="keywords" content="productivity, innovation, business solution, epic">
+
+  <link rel="icon" sizes="180x180" href="Images/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600|Ubuntu|Viga|Indie+Flower|Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Calendar Packages Stylesheets -->
+  <link href='packages/core/main.css' rel='stylesheet' />
+  <link href='packages/daygrid/main.css' rel='stylesheet' />
+  <link href='packages/timegrid/main.css' rel='stylesheet' />
+  <link href='packages/list/main.css' rel='stylesheet' />
+
+    <!-- Calendar Packages Scripts -->
+  <script src='packages/core/main.js'></script>
+  <script src='packages/interaction/main.js'></script>
+  <script src='packages/daygrid/main.js'></script>
+  <script src='packages/timegrid/main.js'></script>
+  <script src='packages/list/main.js'></script>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Handler for the javascript values here-->
+  <script src='client.js'></script>
+
+</head>
+
+<script>
+  var pointsVal = 0;
+  var x = 1;
+  
+  //implements a very basic post that we an work with
+  //post('/contact/', {name: 'Johnny Bravo'});
+  function post(path, params, method='post') {
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = key;
+        hiddenField.value = params[key];
+
+        form.appendChild(hiddenField);
+      }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+    }
+
+    function Get(yourUrl){
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET",yourUrl,false);
+    Httpreq.send(null);
+    return Httpreq.responseText;          
+}
+
+function addTask() {
+  if (x<11){
+  var taskName = prompt("Enter Short Task Description");
+  var temp = document.createElement("DIV");
+  temp.innerHTML = taskName;
+
+  temp.className = 'fc-event';
+  temp.id = String(x)
+  
+
+  document.getElementById('external-events-list').appendChild(temp);
+  x = x+1;
+}
+}
+
+  function checkh(){
+    pointsVal = 100 + (x*10);
+    alert("For completing your task you've earned "+String(100 + (x*10))+" points!")
+
+    document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
+  };
+
+  function clearh(){
+    alert("You get no points :(")
+
+    document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
+  };
+             
+  function splith(){
+    var modifier = parseInt(prompt("Please enter how much you believe you achieved as a percent (eg 25)."));
+    while (!Number.isInteger(modifier)){
+      var modifier = parseInt(prompt("Please enter how much you believe you achieved as a percent (eg 25)."));
+    }
+    pointsVal = parseInt((100 + (x*10))*(modifier/100));
+      alert("For completing your task you've earned "+parseInt((100 + (x*10))*(modifier/100))+" points!")
+
+      document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
+  };
+    
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var Calendar = FullCalendar.Calendar;
+    var Draggable = FullCalendarInteraction.Draggable
+
+    /* initialize the external events
+    -----------------------------------------------------------------*/
+
+    var containerEl = document.getElementById('external-events-list');
+    new Draggable(containerEl, {
+      itemSelector: '.fc-event',
+      eventData: function(eventEl) {
+        return {
+          title: eventEl.innerText.trim()
+        }
+      }
+    });
+
+    //// the individual way to do it
+    // var containerEl = document.getElementById('external-events-list');
+    // var eventEls = Array.prototype.slice.call(
+    //   containerEl.querySelectorAll('.fc-event')
+    // );
+    // eventEls.forEach(function(eventEl) {
+    //   new Draggable(eventEl, {
+    //     eventData: {
+    //       title: eventEl.innerText.trim(),
+    //     }
+    //   });
+    // });
+
+    /* initialize the calendar
+    -----------------------------------------------------------------*/
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new Calendar(calendarEl, {
+
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,listWeek'
+      },
+      editable: true,
+      droppable: true, // this allows things to be dropped onto the calendar
+      clickble: true,
+      drop: function(arg) {
+        // is the "remove after drop" checkbox checked?
+        if (document.getElementById('drop-remove').checked) {
+          // if so, remove the element from the "Draggable Events" list
+          arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+          x=x-1;
+
+        }
+      },
+      eventClick: function(info) {
+        //alert('Event: ' + info.event.title);
+        //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+        //alert('View: ' + info.view.type);
+        if(info.view.type!='listWeek'){
+        if (confirm("Delete Event?")) {
+          info.event.remove();
+          if (document.getElementById('drop-remove').checked) {
+          // if so, remove the element from the "Draggable Events" list
+          document.getElementById('external-events-list').appendChild(arg.draggedEl);
+
+        }
+        } else {
+          txt = "You pressed Cancel!";
+
+        } 
+
+        }
+      },
+
+    });
+
+    calendar.render();
+    yuck();
+  });
+
+</script>
+
+<body>
+    <section class = "title-section" id = "title">
+
+        <div class = "container-fluid">
+
+                        <!-- Nav Bar -->
+                  
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <a class="navbar-brand" href="index.html">
+                                <img src="Images/favicon/android-chrome-512x512.png" width="65" height="65" class="d-inline-block align-top" alt="">
+                                <em>BusyBee</em>
+                            </a>
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                          
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <button type="button" class="btn nav-link" data-toggle="modal" data-target="#modal1">
+                                      <b>Help</b>
+                                    </button>     
+                                  <span class="sr-only">(current)</span>
+                                </li>
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Profile</b>
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">
+                                      <!-- Button trigger modal -->
+                                      <button type="button" class="btn btn" data-toggle="modal" data-target="#modal2">
+                                        Information
+                                      </button>                                    
+                                    </a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                  </div>
+                                </li>
+                                <li class="nav-name">
+                                  <img src="images/user-icon.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                                </li>
+                              </ul>
+                            </div>
+                        </nav>
+                      </div>
+    </section>
+
+    <!--Side Bar-->
+
+    <div class ='wrap' id='wrap'>
+
+      <div id='external-events'>
+        <h4>Tasks to Perform</h4>
+        <div id='external-events-list'>
+        </div> 
+        <p>
+          <input type='checkbox' id='drop-remove' />
+          <label for='drop-remove'>Remove After Drop</label>
+          <button onclick="addTask()">New Task</button>
+        </p>
+      </div>
+      <div id='calendar'></div>
+  
+      <div style='clear:both'></div>
+
+    </div>
+  </div>
+
+  
+  <!-- Modal1 -->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal1Label">How To Use BusyBee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      <div class="modal-body">
+          <li><a>Drag tasks to the month view to make them all-day.</a</li>
+          <li><a>Drag tasks to the week view to specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal2Label">Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        <div class="modal-body">
+            <li><a>Name: John Doe</a></li>
+            <li><a id = pointSystem> </a></li>            
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+</body>

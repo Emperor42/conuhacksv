@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BusyBee</title>
+  <meta name="description" content="Innovative All-in-one scheduling solution designed to reduce stress">
+  <meta name="keywords" content="productivity, innovation, business solution, epic">
+
+  <link rel="icon" sizes="180x180" href="Images/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:600|Ubuntu|Viga|Indie+Flower|Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Handler for the javascript values here-->
+  <script src='client.js'></script>
+
+</head>
+
+<body>
+    <section class = "title-section" id = "title">
+
+        <div class = "container-fluid">
+
+                        <!-- Nav Bar -->
+                  
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <a class="navbar-brand" href="index.html">
+                                <img src="images/logo.png" width="65" height="65" class="d-inline-block align-top" alt="">
+                                <em>BusyBee</em>
+                            </a>
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                          
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <button type="button" class="btn nav-link" data-toggle="modal" data-target="#modal1">
+                                      <b>Help</b>
+                                    </button>     
+                                  <span class="sr-only">(current)</span>
+                                </li>
+                                <li class="nav-item dropdown">
+                                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <b>Profile</b>
+                                  </a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">
+                                      <!-- Button trigger modal -->
+                                      <button type="button" class="btn btn" data-toggle="modal" data-target="#modal2">
+                                        Information
+                                      </button>                                    
+                                    </a>
+                                    <a class="dropdown-item" href="#">Contact</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                  </div>
+                                </li>
+                                <li class="nav-name">
+                                  <img src="images/user-icon.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                                </li>
+                              </ul>
+                            </div>
+                        </nav>
+                      </div>
+    </section>
+
+    <section>
+
+        <div class="container-fluid forms">
+
+            <div class = "forms">
+                <h2>User</h2>
+                <form>
+                    <div class="form-group row">
+                        <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-10">
+                          <input type="Firstname" class="form-control" id="inputFirstName" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                          <input type="deadline" class="form-control" id="inputDeadline" placeholder="Deadline">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputType" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-10">
+                          <input type="type" class="form-control" id="inputType" placeholder="Type">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="Points-Tags" class="col-sm-2 col-form-label">Points, Tags</label>
+                        <div class="col-sm-10">
+                          <input type="Points-Tags" class="form-control" id="inputPoints-Tags" placeholder="Points, Tags">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </section>
+      
+        
+  <!-- Modal1 -->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal1Label">How To Use BusyBee</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      <div class="modal-body">
+          <li><a>Drag tasks to the month view to make them all-day.</a</li>
+          <li><a>Drag tasks to the week view to specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal2Label">Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        <div class="modal-body">
+            <li><a>Name: </a></li>
+            <li><a>Points: </a></li>            
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

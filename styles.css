@@ -14,6 +14,61 @@ body{
     color: #303841;
   }
 
+  .forms{
+    
+    padding: 40px 30px;
+    margin: auto;
+  }
+
+  .form-admin{
+    float: left;
+    padding-left: 60px;
+    padding-top: 60px;
+    width: 40%;
+  }
+
+  .form-user{
+    float: right;
+    padding-right: 60px;
+    padding-top: 60px;
+    width: 40%;
+  }
+
+  .w3-button{
+    border: 1px solid #f6c90e;
+    border-width: 5px;
+    border-radius: 5px;
+    color: black;
+    padding: 4px;
+    text-decoration: none;
+  }
+
+  .w3-button:hover{
+    color: #f6c90e;
+    text-decoration: none;
+  }
+
+  .col-sm-2{
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .vl {
+    border-left: 1px solid gray;
+    height: 470px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    margin-top: 130px;
+    top: 0;
+  }
+
+  h2{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 2.6rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
   /* Navigation Bar */
 
 .navbar{
