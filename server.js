@@ -25,6 +25,7 @@ client.connect(err => {
   const taskCollection = client.db("main").collection("tasks");
 
 
+
   //define events
   //dealing with the events
   //Create an event handler:
@@ -46,6 +47,7 @@ client.connect(err => {
     var filename = "." + q.pathname;
     tasks = 1;
     users = 1;
+
     //START: General Varables for the cookies that we need
     var userCode = cookies.get('UserCode', { signed: true });
     var iAmAdmin = cookies.get('IAmAdmin', { signed: true });
@@ -72,6 +74,15 @@ client.connect(err => {
       //get or post only, always check events
       console.log(filename);
       //register the different end points, this must be first
+      if (req.url==='/test'){
+        res.writeHead(302, {
+          'Location': '/',
+          'Content-type' : 'text/json'
+          //add other headers here...
+        });
+       res.write(' [{ title  : \'event3\',start  : \'2010-01-09T12:30:00\',allDay : false }]');
+        return res.end();
+    }
       if (req.url==='/'){
           filename = "./index.html";
       }
@@ -85,6 +96,8 @@ client.connect(err => {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found <a href=\"index.html\">Go to Home</>");
         }
+        //read through line by line and edit a file
+        
         if (filename.includes(".css")){
           res.writeHead(200, {'Content-type' : 'text/css'});
           res.write(data);
@@ -95,7 +108,7 @@ client.connect(err => {
           res.write(data);
           return res.end();
         } 
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, {'Content-Type': 'text/html', 'profile': 'test'});
         res.write(data);
         res.end();
         return;
@@ -105,16 +118,10 @@ client.connect(err => {
 
 
   }).listen(port); 
+  
 
   // perform actions on the collection object
   client.close();
 });
 
 console.log("LISTENING on ", port)
-
-/*
-  Defines a security layer as needed, default is plaintext
-*/
-function generalSecurityLayer(message, seed, pwd){
-  
-}
