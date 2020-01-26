@@ -63,9 +63,11 @@ body{
     width: 200px;
     padding: 10px;
     margin-top: 86px;
-    border: 1px solid #ccc;
-    background: #eee;
+    border: 1px solid #303841;
+    background: #3a4750;
+    color: #eeeeee;
     text-align: center;
+    border-radius: 5px;
   }
 
   #external-events h4 {
@@ -82,7 +84,7 @@ body{
   #external-events p {
     margin: 1.5em 0;
     font-size: 11px;
-    color: #666;
+    color:#eeeeee;
   }
 
   #external-events p input {
