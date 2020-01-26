@@ -1,0 +1,98 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  
+  .container-fluid{
+    padding: 0 4%;
+  }
+  
+  /* Sections */
+  
+  .title-section{
+    background-color: #f6c90e;
+    color: #303841;
+  }
+
+  /* Navigation Bar */
+
+.navbar{
+    padding: 0 0 1.5rem;
+  }
+  
+  .navbar-brand{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 20px;
+  }
+  
+  .nav-link{
+    color: black;
+    font-size: 1.2rem;
+    font-family: "Monserrat", sans-serif;
+  }
+
+  .nav-name{
+    padding: 0 20px;
+    font-size: 1.2rem;
+    font-family: "Monserrat", sans-serif;
+  }
+
+  .dropdown-item{
+    text-align: center;
+  }
+
+  .main {
+    margin-left: 160px; 
+    padding: 0px 10px;
+
+  }
+
+  .hexcontainer {
+    margin-top: 120px;
+  }
+  .hex-3-row {
+    display: table;
+    margin: 45px auto;
+  }
+  .hex {
+    display: inline-block;
+    width: 190px;
+    height: 110px;
+    color: white;
+
+    position: relative;
+    margin-left: 15px;
+    z-index: 110;
+    text-align: center;
+    line-height: 110px;
+  }
+  .hex::after {
+    content: "";
+
+    height: 110px;
+    width: 190px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: rotate(60deg);
+    z-index: -1;
+  }
+  .hex::before {
+    content: "";
+
+    height: 110px;
+    width: 190px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: rotate(-60deg);
+    z-index: -1;
+  }
+
+
+  
