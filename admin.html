@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BusyBee</title>
+  <title>BusyBee - Admin</title>
   <meta name="description" content="Innovative All-in-one scheduling solution designed to reduce stress">
   <meta name="keywords" content="productivity, innovation, business solution, epic">
 
@@ -52,6 +52,39 @@
 
 </head>
 
+<script>
+  
+  function removeTask(){
+    alert('remove task')
+  };
+
+  function editTask(){
+    alert('edit task')
+  };
+
+  function createTask(){
+    alert('create task')
+  };
+
+  function userStats(){
+    alert('user stats')
+  };
+
+  function removeUser(){
+    alert('remove user')
+  };
+
+  function editUser(){
+    alert('edit user')
+  };
+
+  function createUser(){
+    alert('create user')
+  };
+
+
+
+</script>
 
 <body>
   <section class="title-section" id="title">
@@ -117,37 +150,37 @@
     <div class="hexcontainer">
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/create-t.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/create-t.png" onclick="createTask()" width= 146.24px height=126.67px alt="image">
         </div>
   
         <div class="hex">
-          <img src="images/admin/edit-t.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/edit-t.png" onclick="editTask()" width= 146.24px height=126.67px alt="image">
         </div>
 
       </div>
   
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/remove-t.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/remove-t.png" onclick="removeTask()" width= 146.24px height=126.67px alt="image">
         </div>
   
         <div class="hex">
-          <img src="images/admin/stats-u.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/stats-u.png" onclick="userStats()" width= 146.24px height=126.67px alt="image">
         </div>
   
         <div class="hex">
-          <img src="images/admin/remove-u.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/remove-u.png" onclick="removeUser()" width= 146.24px height=126.67px alt="image">
         </div>
   
       </div>
   
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/edit-u.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/edit-u.png" onclick="editUser()" width= 146.24px height=126.67px alt="image">
         </div>
   
         <div class="hex">
-          <img src="images/admin/create-u.png" width= 146.24px height=126.67px alt="image">
+          <img src="images/admin/create-u.png" onclick="createUser()" width= 146.24px height=126.67px alt="image">
         </div>
   
       </div>
