@@ -150,37 +150,38 @@
     <div class="hexcontainer">
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/create-t.png" onclick="createTask()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/create-t.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#taskCreate"/>
+          </button>
         </div>
   
         <div class="hex">
-          <img src="images/admin/edit-t.png" onclick="editTask()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/edit-t.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#taskEdit"/>
         </div>
 
       </div>
   
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/remove-t.png" onclick="removeTask()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/remove-t.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#taskRemove"/>
         </div>
   
         <div class="hex">
-          <img src="images/admin/stats-u.png" onclick="userStats()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/stats-u.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#userStats"/>
         </div>
   
         <div class="hex">
-          <img src="images/admin/remove-u.png" onclick="removeUser()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/create-u.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#userCreate"/>
         </div>
   
       </div>
   
       <div class="hex-3-row">
         <div class="hex">
-          <img src="images/admin/edit-u.png" onclick="editUser()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/edit-u.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#userEdit"/>
         </div>
   
         <div class="hex">
-          <img src="images/admin/create-u.png" onclick="createUser()" width= 146.24px height=126.67px alt="image">
+          <input type="image" src="images/admin/remove-u.png" width= 146.24px height=126.67px data-toggle="modal" data-target="#userRemove"/>
         </div>
   
       </div>
@@ -214,23 +215,186 @@
     </div>
   </div>
 
-  <!-- Modal2 -->
-  <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+    <!-- userCreate -->
+    <div class="modal fade" id="userCreate" tabindex="-1" role="dialog" aria-labelledby="userCreateLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userCreateLabel">Create User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                  specify a time.</a></li>
+            <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+            <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+            <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+            <li><a>The green "check" button lets you report you have completed the task.</a></li>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- userRemove -->
+  <div class="modal fade" id="userRemove" tabindex="-1" role="dialog" aria-labelledby="userRemoveLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modal2Label">Profile</h5>
+          <h5 class="modal-title" id="userRemoveLabel">Remove User</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <li><a>Name: </a></li>
-          <li><a>Points: </a></li>
+          <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+  </div>
+
+    <!-- userEdit -->
+    <div class="modal fade" id="userEdit" tabindex="-1" role="dialog" aria-labelledby="userEditLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userEditLabel">Edit User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                  specify a time.</a></li>
+            <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+            <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+            <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+            <li><a>The green "check" button lets you report you have completed the task.</a></li>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- userStats -->
+  <div class="modal fade" id="userStats" tabindex="-1" role="dialog" aria-labelledby="userStatsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userStatsLabel">User Stats</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- taskCreate -->
+    <div class="modal fade" id="taskCreate" tabindex="-1" role="dialog" aria-labelledby="taskCreateLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskCreateLabel">Create Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                  specify a time.</a></li>
+            <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+            <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+            <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+            <li><a>The green "check" button lets you report you have completed the task.</a></li>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- taskEdit -->
+  <div class="modal fade" id="taskEdit" tabindex="-1" role="dialog" aria-labelledby="taskEditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskEditLabel">Edit Task</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- taskRemove -->
+    <div class="modal fade" id="taskRemove" tabindex="-1" role="dialog" aria-labelledby="taskRemoveLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="taskRemoveLabel">Remove Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <li><a>Drag tasks to the month view to make them all-day.</a</li> <li><a>Drag tasks to the week view to
+                  specify a time.</a></li>
+            <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+            <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+            <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+            <li><a>The green "check" button lets you report you have completed the task.</a></li>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>

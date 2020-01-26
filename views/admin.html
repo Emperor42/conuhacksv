@@ -1,0 +1,314 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title BusyBee - Admin
+  meta(name='description' content='Innovative All-in-one scheduling solution designed to reduce stress')
+  meta(name='keywords' content='productivity, innovation, business solution, epic')
+  link(rel='icon' sizes='180x180' href='Images/favicon/android-chrome-192x192.png')
+  link(rel='icon' type='image/png' sizes='32x32' href='Images/favicon/favicon-32x32.png')
+  link(rel='icon' type='image/png' sizes='16x16' href='Images/favicon/favicon-16x16.png')
+  link(rel='manifest' href='/site.webmanifest')
+  meta(name='msapplication-TileColor' content='#da532c')
+  meta(name='theme-color' content='#ffffff')
+  // Google Fonts
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:600|Ubuntu|Viga|Indie+Flower|Shadows+Into+Light&display=swap' rel='stylesheet')
+  // Font Awesome
+  script(src='https://kit.fontawesome.com/c65ddd54fe.js')
+  // CSS Stylesheets
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  link(rel='stylesheet' href='admin_styles.css')
+  // Calendar Packages Stylesheets
+  link(href='packages/core/main.css' rel='stylesheet')
+  link(href='packages/daygrid/main.css' rel='stylesheet')
+  link(href='packages/timegrid/main.css' rel='stylesheet')
+  link(href='packages/list/main.css' rel='stylesheet')
+  // Calendar Packages Scripts
+  script(src='packages/core/main.js')
+  script(src='packages/interaction/main.js')
+  script(src='packages/daygrid/main.js')
+  script(src='packages/timegrid/main.js')
+  script(src='packages/list/main.js')
+  // Bootstrap Scripts
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script.
+  function removeTask(){
+  alert('remove task')
+  };
+  function editTask(){
+  alert('edit task')
+  };
+  function createTask(){
+  alert('create task')
+  };
+  function userStats(){
+  alert('user stats')
+  };
+  function removeUser(){
+  alert('remove user')
+  };
+  function editUser(){
+  alert('edit user')
+  };
+  function createUser(){
+  alert('create user')
+  };
+section#title.title-section
+  .container-fluid
+    // Nav Bar
+    nav.navbar.navbar-expand-lg.navbar-light
+      a.navbar-brand(href='index.html')
+        img.d-inline-block.align-top(src='images/logo.png' width='65' height='65' alt='')
+        em BusyBee
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            button.btn.nav-link(type='button' data-toggle='modal' data-target='#modal1')
+              b Help
+            span.sr-only (current)
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              b Profile
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#')
+                // Button trigger modal
+                button.btn.btn(type='button' data-toggle='modal' data-target='#modal2')
+                  | Information
+              a.dropdown-item(href='#') Logout
+              .dropdown-divider
+              a.dropdown-item(href='#') Something
+          li.nav-item
+            a.nav-link(href='#')
+              b Points
+              span.sr-only (current)
+          li.nav-name
+            img.d-inline-block.align-top(src='images/user-icon.png' width='45' height='45' alt='')
+.hexcontainer
+  .hex-3-row
+    .hex
+      input(type='image' src='images/admin/create-t.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#taskCreate')
+    .hex
+      input(type='image' src='images/admin/edit-t.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#taskEdit')
+  .hex-3-row
+    .hex
+      input(type='image' src='images/admin/remove-t.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#taskRemove')
+    .hex
+      input(type='image' src='images/admin/stats-u.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#userStats')
+    .hex
+      input(type='image' src='images/admin/create-u.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#userCreate')
+  .hex-3-row
+    .hex
+      input(type='image' src='images/admin/edit-u.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#userEdit')
+    .hex
+      input(type='image' src='images/admin/remove-u.png' width='146.24px' height='126.67px' data-toggle='modal' data-target='#userRemove')
+// Modal1
+#modal1.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modal1Label' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#modal1Label.modal-title How To Use BusyBee
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// userCreate
+#userCreate.modal.fade(tabindex='-1' role='dialog' aria-labelledby='userCreateLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#userCreateLabel.modal-title Create User
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// userRemove
+#userRemove.modal.fade(tabindex='-1' role='dialog' aria-labelledby='userRemoveLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#userRemoveLabel.modal-title Remove User
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// userEdit
+#userEdit.modal.fade(tabindex='-1' role='dialog' aria-labelledby='userEditLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#userEditLabel.modal-title Edit User
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// userStats
+#userStats.modal.fade(tabindex='-1' role='dialog' aria-labelledby='userStatsLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#userStatsLabel.modal-title User Stats
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// taskCreate
+#taskCreate.modal.fade(tabindex='-1' role='dialog' aria-labelledby='taskCreateLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#taskCreateLabel.modal-title Create Task
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// taskEdit
+#taskEdit.modal.fade(tabindex='-1' role='dialog' aria-labelledby='taskEditLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#taskEditLabel.modal-title Edit Task
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+// taskRemove
+#taskRemove.modal.fade(tabindex='-1' role='dialog' aria-labelledby='taskRemoveLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#taskRemoveLabel.modal-title Remove Task
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        li
+          a
+            | Drag tasks to the month view to make them all-day. 
+            li
+              a
+                | Drag tasks to the week view to
+                | specify a time.
+            li
+              a Use list view for a condensed view of your tasks this week.
+            li
+              a The blue &quot;split&quot; button lets you report how much of the task you have finished.
+            li
+              a The red &quot;clear&quot; button lets you report you have not attempted the task.
+            li
+              a The green &quot;check&quot; button lets you report you have completed the task.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
