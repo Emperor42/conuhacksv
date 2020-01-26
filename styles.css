@@ -31,24 +31,24 @@ body{
   }
   
   .nav-link{
+    color: black;
     font-size: 1.2rem;
-    font-family: "Montserrat-Light",sans-serif;
+    font-family: "Monserrat", sans-serif;
   }
 
   .nav-name{
     padding: 0 20px;
     font-size: 1.2rem;
-    font-family: "Montserrat-Light",sans-serif;
+    font-family: "Monserrat", sans-serif;
+  }
+
+  .dropdown-item{
+    text-align: center;
   }
 
   .main {
     margin-left: 160px; 
     padding: 0px 10px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    #sidenav {padding-top: 15px;}
-    #sidenav a {font-size: 18px;}
   }
 
   #wrap {
