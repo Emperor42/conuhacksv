@@ -70,6 +70,7 @@ body{
     z-index: 110;
     text-align: center;
     line-height: 110px;
+    cursor: pointer;
   }
   .hex::after {
     content: "";
@@ -81,6 +82,7 @@ body{
     left: 0px;
     transform: rotate(60deg);
     z-index: -1;
+    cursor: pointer;
   }
   .hex::before {
     content: "";
@@ -92,6 +94,8 @@ body{
     left: 0px;
     transform: rotate(-60deg);
     z-index: -1;
+    cursor: pointer;
+
   }
 
 
