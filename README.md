@@ -1,2 +1,2 @@
 # Concordia Hacks V
-repo for CONUHACKS V
+Repo for ConUHacks V 
