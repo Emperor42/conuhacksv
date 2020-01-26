@@ -134,6 +134,7 @@ script.
     //arg.draggedEl.parentNode.removeChild(arg.draggedEl);
     arg.draggedEl.hidden=true;
     document.cookie= arg.draggedEl.innerText.trim()+":"+arg.draggedEl.id;
+    //post('/event/claim', arg.draggedEl.id);
   }
   },
   eventClick: function(info) {
@@ -146,6 +147,7 @@ script.
   console.log(info.eventData);
   console.log(info.event.id.trim());
   document.getElementById(info.event.id.trim()).hidden=false; 
+  //post('/event/stop', info.event.id);
   }
   } else {
   txt = "You pressed Cancel!";

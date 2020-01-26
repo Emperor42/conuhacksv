@@ -14,7 +14,7 @@ var keys = ['keyboard cat'];
 
 //database setup
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Dev:<password>@conuhacks-g1c1s.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Dev:devPassword@conuhacks-g1c1s.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   //define the collection for the user, has 
