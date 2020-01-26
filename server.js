@@ -37,6 +37,7 @@ client.connect(err => {
 
   //START: Actual Event Handlers
 
+  var filename = "";
 
   http.createServer(function (req, res) {
     //make the cookies object
@@ -46,161 +47,38 @@ client.connect(err => {
     tasks = 1;
     users = 1;
     //START: General Varables for the cookies that we need
-    var userCode = cookies.get('UserCode', { signed: true })
-    var iAmAdmin = cookies.get('IAmAdmin', { signed: true })
-
-  console.log(req.method);
-  if (req.method=="POST"){
-    //general data handling
-    console.log(req.headers)
-    console.log(req.read);
-    var body = '';
-          req.on('data', function (data) {
-              body += data;
-              // Too much POST data, kill the connection!
-              // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
-              if (body.length > 1e6)
-                  req.connection.destroy();
-          });
-          req.on('end', function () {
-              var post = qs.parse(body);
-              // use post['blah'], etc.
-              console.log(post['to']);
-             
-              if(filename.includes("event")){
-                if (iAmAdmin){
-                  //addTask
-                  if(filename.includes("addTask")){
-                    post['code']= tasks++//gets the newest 
-                    post['parent'] = -1;
-                    taskCollection.insertOne(post, function(err, res) {
-                      if (err) throw err;
-                      console.log("1 document inserted");
-                    });
-                  }
-                  //editTask
-                  if(filename.includes("editTask")){
-                    var query =  {code:post['code']};
-                    found = taskCollection.updateOne(query,post, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //removeTask
-                  if(filename.includes("removeTask")){
-                    var query =  {code:post['code']};
-                    found = taskCollection.deleteOne(query, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document removed");
-                    });
-                  }
-                  //removeUser
-                  if(filename.includes("removeUser")){
-                    var query =  {code:post['code']};
-                    found = userCollection.deleteOne(query, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document Removed");
-                    });
-                  }
-                  //addUser
-                  if(filename.includes("addUser")){
-                    post['code']= users++//gets the newest 
-                    userCollection.insertOne(post, function(err, res) {
-                      if (err) throw err;
-                      console.log("1 document inserted");
-                    });
-                  }
-                }
-                  //claim task (user calls, updates task)
-                  if(filename.includes("claimTask")){
-                    var query= {code:post['code'], status:false};//gets the newest 
-                    var claims =  {worker:userCode};
-                    found = taskCollection.updateOne(query,claims, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //end task (user calls, updates task)
-                  if(filename.includes("endTask")){
-                    var query= {code:post['code'], status:false};//gets the newest 
-                    var claims =  {worker:-1};
-                    found = taskCollection.updateOne(query,claims, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //complete task (user calls, updates task)
-                  if(filename.includes("completeTask")){
-                    var query= {code:post['code'], status:false};//gets the newest 
-                    var claims =  {status:true};
-                    found = taskCollection.updateOne(query,claims, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //split task
-                  if(filename.includes("splitTask")){
-                    var query= {code:post['code'], status:false};//gets the newest 
-                    var nextSplit = post['split']+1;
-                    var claims =  {status:nextSplit};
-                    found = taskCollection.updateOne(query,claims, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //userData
-                  if(filename.includes("userData")){
-                    var query= {code:userCode};//gets the newest (should output the values directly)
-                    found = taskCollection.findOne(query, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //updateData
-                  if(filename.includes("updateData")){
-                    var query =  {code:post['code']};
-                    found = userCollection.updateOne(query,post, function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //findOpenTasks
-                  if(filename.includes("userData")){
-                    var query= {status:false, worker:-1};//gets the newest (should output the values directly)
-                    found = taskCollection.find(query).toArray(function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //findUserTasks
-                  if(filename.includes("findUserTasks")){
-                    var query= {status:false, worker:userCode};//gets the newest (should output the values directly)
-                    found = taskCollection.find(query).toArray(function(err, res){
-                      if (err) throw err;
-                      console.log("1 document updated");
-                    });
-                  }
-                  //findUserTasks
-                  if(filename.includes("validate")){
-                    console.log("DUMMY");
-                  }
-              }
-            //PROCESS EVERYTHING OUT AS NEDED
-
-          });
+    var userCode = cookies.get('UserCode', { signed: true });
+    var iAmAdmin = cookies.get('IAmAdmin', { signed: true });
+    console.log(req.method);
+    if(req.method==='POST'){
+      
+      if(iAmAdmin){
+        res.writeHead(302, {
+          'Location': '/admin'
+          //add other headers here...
+        });
+        return res.end();
+      }
+      else{
+        res.writeHead(302, {
+          'Location': '/'
+          //add other headers here...
+        });
+        return res.end();
+      }
     }
-    if (req.method=="GET"||req.method=="POST"){
+
+    if (req.method==="GET"){
       //get or post only, always check events
       console.log(filename);
       //register the different end points, this must be first
-      if (filename=="./"||filename.includes("index")){
+      if (req.url==='/'){
           filename = "./index.html";
       }
-      //the event rule to remove extra and send to old
-      if(filename.includes("event")){
-        filename = "./index.html";
+      if (req.url==='/admin'){
+        filename = "./admin.html";
       }
-   
+    }
       //other site checks to run through
       fs.readFile(filename, function(err, data) {
         if (err) {
@@ -219,9 +97,10 @@ client.connect(err => {
         } 
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write(data);
-        return res.end();
+        res.end();
+        return;
       });
-    }
+    
     
 
 

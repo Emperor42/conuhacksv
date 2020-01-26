@@ -46,6 +46,44 @@
 
 <script>
   
+  //implements a very basic post that we an work with
+  //post('/contact/', {name: 'Johnny Bravo'});
+  function post(path, params, method='post') {
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        const hiddenField = document.createElement('input');
+        hiddenField.type = 'hidden';
+        hiddenField.name = key;
+        hiddenField.value = params[key];
+
+        form.appendChild(hiddenField);
+      }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+    }
+
+    //implements a very basic post that we an work with
+  //post('/contact/', {name: 'Johnny Bravo'});
+  function get(path, method='get') {
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    const form = document.createElement('form');
+    form.method = method;
+    form.action = path;
+
+    document.body.appendChild(form);
+    form.submit();
+    }
+
+
   function checkh(){
     alert('check')
   };
@@ -107,6 +145,7 @@
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+          post('/test/drop', '{code:info.event().id}');
         }
       },
       eventClick: function(info) {
@@ -119,16 +158,19 @@
           if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           document.getElementById('external-events-list').appendChild(arg.draggedEl);
+          console.log(info.eventData);
+          post('/event/remove', '{code:info.event().id}');
         }
         } else {
           txt = "You pressed Cancel!";
           info.el.style.borderColor = 'red';
         } 
         // change the border color just for fun
+        }
       }
-    }
+
     });
-    
+
     calendar.render();
 
   });
@@ -199,11 +241,11 @@
       <div id='external-events'>
         <h4>Tasks to Perform</h4>
         <div id='external-events-list'>
-          <div class='fc-event'>Hello</div>
-          <div class='fc-event'>My Event 2</div>
-          <div class='fc-event'>My Event 3</div>
-          <div class='fc-event'>My Event 4</div>
-          <div class='fc-event'>My Event 5</div>
+          <div class='fc-event' id='1'>Hello</div>
+          <div class='fc-event' id='2'>My Event 2</div>
+          <div class='fc-event' id='3'>My Event 3</div>
+          <div class='fc-event' id='4'>My Event 4</div>
+          <div class='fc-event' id='5'>My Event 5</div>
         </div> 
         <p>
           <input type='checkbox' id='drop-remove' />
