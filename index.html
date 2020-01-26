@@ -41,6 +41,18 @@
 </head>
 
 <script>
+  
+  function checkh(){
+    alert('check')
+  };
+
+  function clearh(){
+    alert('clear')
+  };
+
+  function splith(){
+    alert('split')
+  };
 
   document.addEventListener('DOMContentLoaded', function() {
     var Calendar = FullCalendar.Calendar;
@@ -97,6 +109,7 @@
         //alert('Event: ' + info.event.title);
         //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
         //alert('View: ' + info.view.type);
+        if(info.view.type!='listWeek'){
         if (confirm("Delete Event?")) {
           info.event.remove();
           if (document.getElementById('drop-remove').checked) {
@@ -109,15 +122,16 @@
         } 
         // change the border color just for fun
       }
-
+    }
     });
     
     calendar.render();
 
   });
 
-</script>
 
+
+</script>
 
 <body>
     <section class = "title-section" id = "title">
