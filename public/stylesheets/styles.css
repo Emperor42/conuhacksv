@@ -1,0 +1,130 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+  }
+  
+  .container-fluid{
+    padding: 0 4%;
+  }
+  
+  /* Sections */
+  
+  .title-section{
+    background-color: #f6c90e;
+    color: #303841;
+  }
+
+  /* Navigation Bar */
+
+.navbar{
+    padding: 0 0 1.5rem;
+  }
+  
+  .navbar-brand{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+  
+  .nav-item{
+    padding: 0 20px;
+  }
+  
+  .nav-link{
+    color: black;
+    font-size: 1.2rem;
+    font-family: "Monserrat", sans-serif;
+  }
+
+  .nav-name{
+    padding: 0 20px;
+    font-size: 1.2rem;
+    font-family: "Monserrat", sans-serif;
+  }
+
+  .dropdown-item{
+    text-align: center;
+  }
+
+  .main {
+    margin-left: 160px; 
+    padding: 0px 10px;
+  }
+
+  #wrap {
+    width: 1100px;
+    margin: 0 auto;
+  }
+
+  #external-events {
+    position: fixed;
+    float: left;
+    margin: 0px;
+    width: 200px;
+    padding: 10px;
+    margin-top: 86px;
+    border: 1px solid #303841;
+    background: #3a4750;
+    color: #eeeeee;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  #external-events h4 {
+    font-size: 16px;
+    margin-top: 0;
+    padding-top: 1em;
+  }
+
+  #external-events .fc-event {
+    margin: 10px 0;
+    cursor: pointer;
+  }
+
+  #external-events p {
+    margin: 1.5em 0;
+    font-size: 11px;
+    color:#eeeeee;
+  }
+
+  #external-events p input {
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  #calendar {
+    padding: 2%;
+    float: right;
+    width: 900px;
+  }
+
+  #check{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #check:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
+
+  #split{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #split:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
+
+  #clear{
+    padding: 0 3px;
+    filter: grayscale(100%);
+  }
+
+  #clear:hover{
+    padding: 0 3px;
+    filter: grayscale(0%);
+  }
+  
