@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>BusyBee</title>
+  <meta name="description" content="Innovative All-in-one scheduling solution designed to reduce stress">
+  <meta name="keywords" content="productivity, innovation, business solution, epic">
 
   <link rel="icon" sizes="180x180" href="Images/favicon/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon/favicon-32x32.png">
@@ -15,18 +17,20 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:600|Ubuntu|Viga|Indie+Flower|Shadows+Into+Light&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
+
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/c65ddd54fe.js"></script>
-
-  <!-- Calendar Packages -->
+  <!-- Calendar Packages Stylesheets -->
   <link href='packages/core/main.css' rel='stylesheet' />
   <link href='packages/daygrid/main.css' rel='stylesheet' />
   <link href='packages/timegrid/main.css' rel='stylesheet' />
   <link href='packages/list/main.css' rel='stylesheet' />
+
+    <!-- Calendar Packages Scripts -->
   <script src='packages/core/main.js'></script>
   <script src='packages/interaction/main.js'></script>
   <script src='packages/daygrid/main.js'></script>
@@ -154,7 +158,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                               <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
-                                    <button type="button" class="btn nav-link" data-toggle="modal" data-target="#exampleModal">
+                                    <button type="button" class="btn nav-link" data-toggle="modal" data-target="#modal1">
                                       <b>Help</b>
                                     </button>     
                                   <span class="sr-only">(current)</span>
@@ -167,7 +171,7 @@
                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#">
                                       <!-- Button trigger modal -->
-                                      <button type="button" class="btn btn" data-toggle="modal" data-target="#exampleModal">
+                                      <button type="button" class="btn btn" data-toggle="modal" data-target="#modal2">
                                         Information
                                       </button>                                    
                                     </a>
@@ -214,24 +218,49 @@
   </div>
 
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal1 -->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Label" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <h5 class="modal-title" id="modal1Label">How To Use BusyBee</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
         </div>
       <div class="modal-body">
-          <li><a>Name: </a></li>
-          <li><a>Points: </a></li>            
+          <li><a>Drag tasks to the month view to make them all-day.</a</li>
+          <li><a>Drag tasks to the week view to specify a time.</a></li>
+          <li><a>Use list view for a condensed view of your tasks this week.</a></li>
+          <li><a>The blue "split" button lets you report how much of the task you have finished.</a></li>
+          <li><a>The red "clear" button lets you report you have not attempted the task.</a></li>
+          <li><a>The green "check" button lets you report you have completed the task.</a></li>
+
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal2Label">Profile</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+        <div class="modal-body">
+            <li><a>Name: </a></li>
+            <li><a>Points: </a></li>            
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
 </body>
