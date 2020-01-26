@@ -7,7 +7,33 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const bodyParser = require("body-parser");
+const taskController = require("./routes/db");
+
+// db instance connection
+//require("./");
+
 var app = express();
+
+
+const port = process.env.PORT || 3301;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
+// API ENDPOINTS
+
+app
+  .route("/tasks")
+  .get(taskController.listAllTasks)
+  .post(taskController.createNewTask);
+
+app
+  .route("/tasks/:taskid")
+  .get(taskController.readTask)
+  .put(taskController.updateTask)
+  .delete(taskController.deleteTask);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

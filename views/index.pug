@@ -159,6 +159,7 @@ script.
   });
   calendar.render();
   });
+
 section#title.title-section
   .container-fluid
     // Nav Bar
@@ -198,6 +199,9 @@ section#title.title-section
       input#drop-remove(type='checkbox' checked)
       label(for='drop-remove') remove after drop
   #calendar
+    //load up the task for the long term (NYI)
+    include includes/events
+    
   div(style='clear:both')
 // Modal1
 #modal1.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modal1Label' aria-hidden='true')

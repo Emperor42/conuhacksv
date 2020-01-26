@@ -2,6 +2,29 @@ var express = require('express');
 var router = express.Router();
 var fs = require("fs");
 
+const dbURI  = "mongodb+srv://Dev:devPassword@conuhacks-g1c1s.mongodb.net/test?retryWrites=true&w=majority";
+const mongoose = require("mongoose");
+
+
+const options = {
+  reconnectTries: Number.MAX_VALUE,
+  poolSize: 10
+};
+
+mongoose.connect(dbURI, options).then(
+  () => {
+    console.log("Database connection established!");
+  },
+  err => {
+    console.log("Error connecting Database instance due to: ", err);
+  }
+);
+
+// require any models
+
+require("../models/Task");
+
+
 /* post users listing. */
 router.post('/claim', function(req, res, next) {
   console.log("claim");
