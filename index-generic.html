@@ -47,6 +47,7 @@
 </head>
 
 <script>
+  var pointsVal = 0;
   var x = 1;
   
   //implements a very basic post that we an work with
@@ -96,16 +97,30 @@ function addTask() {
 }
 
   function checkh(){
-    alert('check')
+    pointsVal = 100 + (x*10);
+    alert("For completing your task you've earned "+String(100 + (x*10))+" points!")
+
+    document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
   };
 
   function clearh(){
-    alert('clear')
-  };
+    alert("You get no points :(")
 
-  function splith(){
-    alert('split')
+    document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
   };
+             
+  function splith(){
+    var modifier = parseInt(prompt("Please enter how much you believe you achieved as a percent (eg 25)."));
+    while (!Number.isInteger(modifier)){
+      var modifier = parseInt(prompt("Please enter how much you believe you achieved as a percent (eg 25)."));
+    }
+    pointsVal = parseInt((100 + (x*10))*(modifier/100));
+      alert("For completing your task you've earned "+parseInt((100 + (x*10))*(modifier/100))+" points!")
+
+      document.getElementById("pointSystem").innerHTML = "Points: "+pointsVal;
+  };
+    
+
 
   document.addEventListener('DOMContentLoaded', function() {
     var Calendar = FullCalendar.Calendar;
@@ -142,10 +157,7 @@ function addTask() {
 
     var calendarEl = document.getElementById('calendar');
     var calendar = new Calendar(calendarEl, {
-      events: function(){
-        
-      }
-  ,
+
       plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
       header: {
         left: 'prev,next today',
@@ -160,7 +172,8 @@ function addTask() {
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
-          post('/test/drop', '{code:info.event().id}');
+          x=x-1;
+
         }
       },
       eventClick: function(info) {
@@ -173,21 +186,20 @@ function addTask() {
           if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
           document.getElementById('external-events-list').appendChild(arg.draggedEl);
-          console.log(info.eventData);
-          post('/event/remove', '{code:info.event().id}');
+
         }
         } else {
           txt = "You pressed Cancel!";
-          info.el.style.borderColor = 'red';
+
         } 
-        // change the border color just for fun
+
         }
       },
 
     });
 
     calendar.render();
-
+    yuck();
   });
 
 </script>
@@ -303,8 +315,8 @@ function addTask() {
               </button>
           </div>
         <div class="modal-body">
-            <li><a>Name: </a></li>
-            <li><a>Points: </a></li>            
+            <li><a>Name: John Doe</a></li>
+            <li><a id = pointSystem> </a></li>            
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
