@@ -34,6 +34,16 @@ app
   .put(taskController.updateTask)
   .delete(taskController.deleteTask);
 
+app
+  .route("/users")
+  .get(taskController.listAllTasks)
+  .post(taskController.createNewTask);
+
+app
+  .route("/users/:taskid")
+  .get(taskController.readTask)
+  .put(taskController.updateTask)
+  .delete(taskController.deleteTask);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

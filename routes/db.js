@@ -50,3 +50,55 @@ exports.deleteTask = (req, res) => {
     res.status(200).json({ message: "Task successfully deleted" });
   });
 };
+
+
+exports.listAllUser = (req, res) => {
+  User.find({}, (err, task) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).json(task);
+  });
+};
+
+exports.createNewUser = (req, res) => {
+  let newUser = new Task(req.body);
+  newUser.save((err, task) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(201).json(task);
+  });
+};
+
+exports.readUser = (req, body) => {
+  User.findById(req.params.taskid, (err, task) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).json(task);
+  });
+};
+
+exports.updateUser = (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.taskid },
+    req.body,
+    { new: true },
+    (err, task) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.status(200).json(task);
+    }
+  );
+};
+
+exports.deleteUser = (req, res) => {
+  Task.remove({ _id: req.params.taskid }, (err, task) => {
+    if (err) {
+      res.status(404).send(err);
+    }
+    res.status(200).json({ message: "Task successfully deleted" });
+  });
+};
